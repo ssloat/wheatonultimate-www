@@ -1,5 +1,17 @@
-.clippy {
+.clippy img {
   margin-top: -3px;
   position: relative;
   top: 3px;
+  border: 0;
+}
+.clippy-btn {
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 20px;
+    color: #333;
+    white-space: nowrap;
+    cursor: pointer;
+}
+.clippy {
+  box-sizing: border-box;
 }

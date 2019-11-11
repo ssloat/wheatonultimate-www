@@ -1,38 +1,54 @@
 {% extends "base.html" %}
 
+{% block header %}
+  <link href="css/clippy.css" rel="stylesheet">
+  <!--
+  <link href="css/primer.css" rel="stylesheet" />
+  -->
+{% endblock %}
+
 {% block content %}
-<link href="css/clippy.css" rel="stylesheet">
 
 <script src="js/clipboard.js/2.0.4/clipboard.min.js"></script>
 <script>
-new ClipboardJS('.btn')
+new ClipboardJS('.clippy-btn')
 </script>
 
-<section>
-  <table>
-  {{ form.group.label }}<br>
-  {% for field in form.group %}
-    <tr>
-      <td>{{field}}</td>
-      <td>{{field.label}}</td>
-    </tr>
-  {% endfor %}
-  </table>
+<div class="container">
+  <div class="row">
+    {{ form.group.label }}<br>
+  </div>
 
-  <div class="input-group">
-    <div>Send an email to the below address from the account you wish to signup.  The subject and body of the email don't matter.</div><br>
+  <div> <!-- class="row"> -->
+    <table>
+    {% for field in form.group %}
+      <tr>
+        <td>{{field}}</td>
+        <td>{{field.label}}</td>
+      </tr>
+    {% endfor %}
+    </table>
   </div>
-  <div class="input-group">
-    <input id="selected-group" value="wheaton-ultimate+subscribe@googlegroups.com" type="text" size=40>
+
+  <div>
+    <div class="row">
+      <div>Send an email to the below address from the account you wish to signup.  The subject and body of the email don't matter.</div><br>
+    </div>
     <!--
-    <span class="input-group-button">
-      <button class="btn" data-clipboard-target="#selected-group">
-        <img class="clippy" src="img/clippy.svg" alt="Copy to clipboard">
-      </button>
-    </span>
+    <pre class="snippet">
+      <button class="btn" data-clipboard-snippet=""></button>
+      <code class="js hljs javascript">wheaton-ultimate+subscribe@googlegroups.com</code>
+    </pre>
     -->
+
+    <div class="row clippy">
+      <input id="selected-group" value="wheaton-ultimate+subscribe@googlegroups.com" type="text">
+      <button class="clippy-btn" data-clipboard-target="#selected-group">
+        <img src="img/clippy.svg" alt="Copy to clipboard" width="13">
+      </button>
+    </div>
   </div>
-</section>
+</div>
 {% endblock %}
 
 {% block javascript %}
