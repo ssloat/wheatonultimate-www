@@ -14,6 +14,7 @@
 new ClipboardJS('.clippy-btn')
 </script>
 
+<!--https://webapps.stackexchange.com/questions/13508/how-can-i-subscribe-to-a-google-mailing-list-with-a-non-google-e-mail-address-->
 <div class="container">
   <div class="row">
     {{ form.group.label }}<br>
@@ -31,8 +32,9 @@ new ClipboardJS('.clippy-btn')
   </div>
 
   <div>
+    <div class="row"><h3>Are you signing up yourself?</h3></div>
     <div class="row">
-      <div>Send an email to the below address from the account you wish to signup.  The subject and body of the email don't matter.</div><br>
+      <div>Send an email to the below address from the account you wish to signup. The subject and body of the email don't matter.</div><br>
     </div>
     <!--
     <pre class="snippet">
@@ -47,6 +49,14 @@ new ClipboardJS('.clippy-btn')
         <img src="img/clippy.svg" alt="Copy to clipboard" width="13">
       </button>
     </div>
+    <!--
+    <div>This <a href="mailto:wheaton-ultimate+subscribe@googlegroups.com?subject=Add to emai list&body=Please add me to the email list.  thanks!">link</a> might work</div>
+    -->
+    <div class="row"><h3>Are you signing up a friend?</h3></div>
+    <div>Tell them about this site</div>
+    <div class="row"><h3>Are you still trying to sign up that friend?</h3></div>
+    <div>Open this <a href="https://groups.google.com/forum/#!forum/wheaton-ultimate/join" name="join-link">link</a> in an incognito/private tab.</div>
+    <div>If you don't use incognito mode, the link will autofill the form with your email/google account details and you won't be able to update.</div>
   </div>
 </div>
 {% endblock %}
@@ -55,7 +65,9 @@ new ClipboardJS('.clippy-btn')
 <script>
 $(document).ready(function(){
   $('input[name=group]').change(function() {
-    $("#selected-group").val($("input[name=group]:checked").val()+"+subscribe@googlegroups.com");
+    var group = $("input[name=group]:checked").val();
+    $("#selected-group").val(group+"+subscribe@googlegroups.com");
+    $("a[name=join-link]").attr("href", "https://groups.google.com/forum/#!forum/"+group+"/join");
   });
 });
 </script>
