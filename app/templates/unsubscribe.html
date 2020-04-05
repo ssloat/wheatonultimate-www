@@ -16,8 +16,7 @@ new ClipboardJS('.clippy-btn')
 
 <!--https://webapps.stackexchange.com/questions/13508/how-can-i-subscribe-to-a-google-mailing-list-with-a-non-google-e-mail-address-->
 <div class="container">
-  <a href="unsubscribe">Unsubscribe page</a>
-  <p>Select whether you are signing up a Gmail account or Non-Gmail account:</p>
+  <p>Select whether you are unsubscribing a Gmail account or Non-Gmail account:</p>
   <ul class="nav nav-tabs">
     <li class="nav-item">
       <a class="nav-link active" data-toggle="tab" href="#gmail">Gmail</a>
@@ -29,10 +28,7 @@ new ClipboardJS('.clippy-btn')
 
   <div class="tab-content">
     <div id="gmail" class="tab-pane container active">
-      <p> easy peasy.  Click each group you want to join. </p>
-      {% for choice in form.group.choices %}
-      <p><a href="https://groups.google.com/forum/#!forum/{{choice[0]}}/join">{{choice[1]}}</a></p>
-      {% endfor %}
+      <p> easy peasy.  Manage your groups from <a href="https://groups.google.com/forum/#!myforums">Google's page</a></p>
       <p>If you have any trouble, try the instructions for Non-Gmail accounts</p>
     </div>
     <div id="non-gmail" class="tab-pane fade">
@@ -42,17 +38,7 @@ new ClipboardJS('.clippy-btn')
         {{ form.group() }}
       </div>
       <div class="row">
-        <div>Send an email to the below address <b>from the account you wish to signup</b>. The subject and body of the email don't matter.</div><br>
-      </div>
-
-      <div class="row">
-        <div>
-          <b>IMPORTANT</b>  
-          <ul>
-            <li>You will get a confirmation email from each group you are adding.  This email might go to your junk mail folder.</li>
-            <li>You <b>MUST</b> respond to the email to be added.  The "Join This Group" button in the email will not work.  Instead, reply to the email.</li>
-          </ul>
-        </div>
+        <div>Send an email to the below address <b>from the account you wish to unsubscribe</b>. The subject and body of the email don't matter.</div><br>
       </div>
 
       <div id="phone-link" class="row d-md-none">
@@ -67,6 +53,9 @@ new ClipboardJS('.clippy-btn')
       </div>
     </div>
   </div>
+  <div>
+    <img src="https://imgs.xkcd.com/comics/unsubscribe_message.png">
+  </div>
 </div>
 {% endblock %}
 
@@ -79,7 +68,7 @@ $(document).ready(function(){
     var selected_groups = [];
     $("input[name=group]:checked").each(function(index, item) {
       console.log(item);
-      selected_groups.push($(this).val()+"+subscribe@googlegroups.com");
+      selected_groups.push($(this).val()+"+unsubscribe@googlegroups.com");
     });
     console.log(selected_groups);
     //var group = $("input[name=group]:checked").val();
@@ -87,7 +76,7 @@ $(document).ready(function(){
 
     $("#phone-link").empty();
     if (selected_groups.length > 0) {
-      $("#phone-link").append('<a href="mailto:'+selected_groups.join(",")+'?subject=Add to emai list&body=Please add me to the email list.  thanks!">Send Email</a>');
+      $("#phone-link").append('<a href="mailto:'+selected_groups.join(",")+'?subject=Its been real&body=I dont know half of you half as well as I should like and I like less than half of you half as well as you deserve.  thanks!">Send Email</a>');
     }
     else {
       $("#phone-link").append("<p>Select groups</p>");
@@ -97,3 +86,4 @@ $(document).ready(function(){
 });
 </script>
 {% endblock %}
+
