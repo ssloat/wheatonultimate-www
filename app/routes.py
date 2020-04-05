@@ -3,7 +3,7 @@ import os
 from flask import render_template
 from app import app, forms
 
-from pymongo import MongoClient
+#from pymongo import MongoClient
 
 @app.route('/')
 @app.route('/index')
