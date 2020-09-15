@@ -30,11 +30,12 @@ new ClipboardJS('.clippy-btn')
 
   <div class="tab-content">
     <div id="gmail" class="tab-pane container active">
-      <p> easy peasy.  Click each group you want to join. </p>
-      {% for choice in form.group.choices %}
-      <p><a href="https://groups.google.com/forum/#!forum/{{choice[0]}}/join">{{choice[1]}}</a></p>
-      {% endfor %}
+      <p>1. Click each group you want to join. You will be taken to the group page.<br>
+      2. Click the Join button at the top (ignore any permission denied messages - you aren't part of the group yet!)</p>
       <p>If you have any trouble, try the instructions for Non-Gmail accounts</p>
+      {% for choice in form.group.choices %}
+      <p><a href="https://groups.google.com/g/{{choice[0]}}">{{choice[1]}}</a></p>
+      {% endfor %}
     </div>
     <div id="non-gmail" class="tab-pane fade">
       <div class="row"> {{ form.group.label }} </div>
@@ -51,7 +52,8 @@ new ClipboardJS('.clippy-btn')
           <b>IMPORTANT</b>  
           <ul>
             <li>You will get a confirmation email from each group you are adding.  This email might go to your junk mail folder.</li>
-            <li>You <b>MUST</b> respond to the email to be added.  The "Join This Group" button in the email will not work.  Instead, reply to the email.</li>
+            <li>You <b>MUST</b> respond to the email to be added.  The "Join This Group" button in the email <b>will not work</b>.<br>
+            Instead, reply to the email.  Nothing is required in the body of your reply - just hit reply, then send.</li>
           </ul>
         </div>
       </div>
