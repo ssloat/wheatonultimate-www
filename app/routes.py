@@ -20,6 +20,10 @@ def unsubscribe():
     groups = forms.GoogleGroupsUnsubscribe()
     return render_template('unsubscribe.html', title='Email lists', form=groups)
 
+@app.route('/kona')
+def kona():
+    return render_template('kona.html')
+
 """
 @app.route('/verify')
 def verify():
